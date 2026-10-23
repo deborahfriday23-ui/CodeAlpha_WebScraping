@@ -1,59 +1,35 @@
-# CodeAlpha Web Scraping Project
+# World Population Data Scraper
 
 ## Project Overview
-This project was completed as part of the CodeAlpha Virtual Data Analytics Internship. It uses Python web scraping techniques to collect, clean, and analyse book information from [Books to Scrape](https://books.toscrape.com/), a website designed for scraping practice.
+This project uses Python to scrape and prepare population data from Wikipedia. It demonstrates web scraping, HTML table extraction, and data cleaning to create a structured dataset for further analysis.
 
-## Objectives
-- Extract book titles, prices, star ratings, and availability.
-- Collect data across all 50 catalogue pages.
-- Clean and validate the scraped dataset.
-- Perform basic exploratory data analysis.
-- Export the cleaned data to a CSV file.
+## Data Source
+- **Website:** Wikipedia
+- **Dataset:** [List of countries and dependencies by population](https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population)
 
-## Tools and Technologies
+## Tools and Libraries
 - Python
 - Requests
-- Beautiful Soup
+- BeautifulSoup
 - Pandas
 - Google Colab
 
-## Data Collection
-The scraper collected 1,000 book records from 50 catalogue pages. Each record contains:
-- **Title:** The book's title.
-- **Price:** The listed price in pounds sterling (£).
-- **Rating:** The displayed star-rating category.
-- **Availability:** The displayed stock status.
+## Methodology
+1. Sent an HTTP request to the Wikipedia page using Python's Requests library.
+2. Parsed the webpage's HTML using BeautifulSoup.
+3. Identified and extracted the relevant population table using Pandas.
+4. Cleaned the dataset by removing a blank row and the Notes column.
+5. Converted population figures to integer values and world-population percentages to numeric values.
+6. Extracted the year from the original date text into a separate `Year` column.
+7. Removed citation markers from the source descriptions.
+8. Checked for missing values, duplicate locations, unwanted spaces, and invalid population values.
 
-## Data Cleaning and Validation
-- Converted prices from text to numeric values.
-- Checked for missing values.
-- Checked for duplicate records and repeated titles.
-- Exported the cleaned dataset to CSV.
+## Output
+- `world_population_cleaned.csv` — the cleaned population dataset.
+- `world_population_scraper.ipynb` — the Jupyter notebook containing the Python code.
 
-The dataset had no missing values or fully duplicated rows. One book title appeared twice with different prices, so both records were retained.
+## Project Purpose
+This project was completed as part of the CodeAlpha Virtual Data Analytics Internship, Task 1: Web Scraping. It demonstrates the collection and preparation of publicly available web data for analysis.
 
-## Key Findings
-- **Total records collected:** 1,000
-- **Average book price:** £35.07
-- **Lowest listed price:** £10.00
-- **Highest listed price:** £59.99
-- **Most common rating:** One star, with 226 books
-- **Least common rating:** Four stars, with 179 books
-- **Availability:** All 1,000 records were listed as in stock
-
-These findings describe the scraped catalogue data and its displayed availability at the time of collection.
-
-## Project Files
-- `CodeAlpha_WebScraping.ipynb` — notebook containing the scraping, cleaning, and analysis code.
-- `books_scraped.csv` — cleaned dataset.
-
-## How to Run
-1. Open the notebook in Google Colab or Jupyter Notebook.
-2. Install the required libraries if they are not already available:
-   `pip install requests beautifulsoup4 pandas`
-3. Run the notebook cells in order to collect and analyse the data.
-
-## Data Source
-[Books to Scrape](https://books.toscrape.com/)
-
-This project was created for educational purposes as part of the CodeAlpha Virtual Data Analytics Internship.
+## Attribution
+Population data was obtained from Wikipedia. Please refer to the [original article](https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population) for its sources, update history, and licensing information.
